@@ -54,8 +54,8 @@ pipeline {
             def dockerImage = docker.build("mohammedimrantk/sysfoo:v${env.BUILD_ID}", "./")
             dockerImage.push()
             dockerImage.push("latest")
-            dockerImage.push("dev") }
-            else {
+            dockerImage.push("dev")
+          } else {
             echo 'This is not master branch'}
           }
         }

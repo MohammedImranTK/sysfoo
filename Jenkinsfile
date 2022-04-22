@@ -55,7 +55,8 @@ pipeline {
             dockerImage.push()
             dockerImage.push("latest")
             dockerImage.push("dev")
-          } else {
+          } 
+          }else {
             echo 'This is not master branch'}
           }
         }

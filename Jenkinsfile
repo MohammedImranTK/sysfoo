@@ -28,6 +28,7 @@ pipeline {
     }
 
     stage('package') {
+      parallel{
       agent {
         docker {
           image 'maven:3.6.3-jdk-11-slim'
@@ -61,7 +62,7 @@ pipeline {
             echo 'This is not master branch'}
           }
         }
-
+    }
       }
     }
   

@@ -31,8 +31,10 @@ pipeline {
         sh 'mvn clean test'
       }
     }
-
+   stage ('running tests parallel'){ 
+parallel{
     stage('package') {
+     
       agent {
         docker {
           image 'maven:3.6.3-jdk-11-slim'
@@ -66,11 +68,13 @@ pipeline {
             echo 'This is not master branch'}
           }
         }
-
-      }
+    }
+   
+}
+} 
     }
   
-  
+
   tools {
     maven 'Maven 3.6.3'
   }

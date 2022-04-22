@@ -26,9 +26,9 @@ pipeline {
         sh 'mvn clean test'
       }
     }
-
+ parallel{
     stage('package') {
-      parallel{
+     
       agent {
         docker {
           image 'maven:3.6.3-jdk-11-slim'

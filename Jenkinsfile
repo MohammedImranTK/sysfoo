@@ -26,7 +26,8 @@ pipeline {
         sh 'mvn clean test'
       }
     }
- parallel{
+   stage ('running tests parallel'){ 
+parallel{
     stage('package') {
      
       agent {
@@ -63,10 +64,12 @@ pipeline {
           }
         }
     }
-      }
+   
+}
+} 
     }
   
-  
+
   tools {
     maven 'Maven 3.6.3'
   }

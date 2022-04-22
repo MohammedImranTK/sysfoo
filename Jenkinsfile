@@ -42,7 +42,7 @@ pipeline {
         archiveArtifacts 'target/*.war'
         } else {
          echo 'This is not master branch'}
-      }
+      
     }
 
     stage('Docker BnP.') {
@@ -63,8 +63,8 @@ pipeline {
 
       }
     }
-
   }
+  
   tools {
     maven 'Maven 3.6.3'
   }

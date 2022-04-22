@@ -32,8 +32,8 @@ pipeline {
         docker {
           image 'maven:3.6.3-jdk-11-slim'
         }
-
-      }
+}
+      
       steps {
         
         if (env.BRANCH_NAME == 'master'){
@@ -44,7 +44,7 @@ pipeline {
          echo 'This is not master branch'}
       
     }
-
+}
     stage('Docker BnP.') {
       agent any
       steps {
@@ -63,7 +63,7 @@ pipeline {
 
       }
     }
-  }
+  
   
   tools {
     maven 'Maven 3.6.3'
@@ -75,3 +75,4 @@ pipeline {
 
   }
 }
+

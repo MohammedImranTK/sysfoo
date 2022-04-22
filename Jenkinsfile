@@ -35,7 +35,7 @@ pipeline {
 }
       
       steps {
-        
+         script {
         if (env.BRANCH_NAME == 'master'){
         echo 'generating artifact....'
         sh 'mvn package -DskipTests'
@@ -44,6 +44,7 @@ pipeline {
          echo 'This is not master branch'}
       
     }
+      }
 }
     stage('Docker BnP.') {
       agent any

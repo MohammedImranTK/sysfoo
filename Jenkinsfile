@@ -35,9 +35,13 @@ pipeline {
 
       }
       steps {
+        
+        if (env.BRANCH_NAME == 'master'){
         echo 'generating artifact....'
         sh 'mvn package -DskipTests'
         archiveArtifacts 'target/*.war'
+        } else {
+         echo 'This is not master branch'}
       }
     }
 
@@ -45,11 +49,14 @@ pipeline {
       agent any
       steps {
         script {
+          if (env.BRANCH_NAME == 'master'){
           docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin') {
             def dockerImage = docker.build("mohammedimrantk/sysfoo:v${env.BUILD_ID}", "./")
             dockerImage.push()
             dockerImage.push("latest")
-            dockerImage.push("dev")
+            dockerImage.push("dev") }
+            else {
+            echo 'This is not master branch'}
           }
         }
 
